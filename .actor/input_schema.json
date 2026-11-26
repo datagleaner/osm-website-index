@@ -1,0 +1,38 @@
+{
+  "title": "OSM index builder (private)",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "countries": {
+      "title": "Countries",
+      "type": "array",
+      "editor": "stringList",
+      "description": "ISO codes to build, one after the other (never two downloads at once). Supported: US, CA, FR, DE, GB, NL, AU. Empty input builds nothing.",
+      "items": {"type": "string"}
+    },
+    "allowDownload": {
+      "title": "Allow the Geofabrik download",
+      "type": "boolean",
+      "description": "Safety switch. Without it the Actor only reports what it would download. Set it only with the founder's go.",
+      "default": false
+    },
+    "pbfUrl": {
+      "title": "Extract URL override",
+      "type": "string",
+      "editor": "textfield",
+      "description": "Optional. Overrides the Geofabrik URL of a single country (for a dated extract). Must be on download.geofabrik.de."
+    },
+    "force": {
+      "title": "Rebuild within 7 days",
+      "type": "boolean",
+      "description": "Geofabrik etiquette allows a full rebuild at most weekly; without this a country built less than 7 days ago is skipped.",
+      "default": false
+    },
+    "storeName": {
+      "title": "Key-value store name",
+      "type": "string",
+      "editor": "textfield",
+      "default": "osm-website-index"
+    }
+  }
+}
